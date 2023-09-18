@@ -8,3 +8,4 @@ def screen_start():
     pygame.display.flip()
 
 
+hi
