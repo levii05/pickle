@@ -1,6 +1,9 @@
+import pygame
+
 SCREEN_LENGTH = 250
 SCREEN_WIDTH = 500
 SOLDIER_HEIGHT = 4
 SOLDIER_WIDTH = 2
 BACKGROUND_COLOR = (0, 255, 0)
 BUSH = "grass.png"
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_LENGTH))
