@@ -1,4 +1,8 @@
+import pygame.display
+
 import screen
 import consts
 
-screen.screen()
+while True:
+    screen.screen_start()
+pygame.display.quit()
