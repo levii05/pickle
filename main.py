@@ -2,9 +2,9 @@
 from pygame import event, QUIT, display
 import screen
 
+screen.draw_game()
 
 while True:
-    screen.draw_game()
     for EVENT in event.get():
         if EVENT.type == QUIT:
             quit()
