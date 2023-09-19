@@ -50,7 +50,7 @@ def draw_bomb(scrn):
 
 def create_soldier():
     soldier = pygame.image.load(consts.SOLDIER)
-    sized_arrow = pygame.transform.scale(soldier, (
+    soldier = pygame.transform.scale(soldier, (
         consts.SOLDIER_WIDTH, consts.SOLDIER_HEIGHT))
     return soldier
 
