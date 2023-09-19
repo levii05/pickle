@@ -1,12 +1,13 @@
 import pygame
 from pygame import event, QUIT, display
 import sys
+
+import consts
 import game_field
 import screen
 import soldier
 
 screen.draw_game()
-
 
 # running = True
 # while running:
@@ -15,6 +16,10 @@ screen.draw_game()
 #             running = False
 
 display.update()
+state = {
+    "is_window_open": True,
+    "state": consts.RUNNING_STATE,
+}
 
 
 def handle_user_events():
@@ -42,7 +47,7 @@ def handle_user_events():
                     soldier.move_up(screen.scrn, solider)
 
 
-                elif event.key == pygame.K_DOWN :
+                elif event.key == pygame.K_DOWN:
                     soldier.move_down(screen.scrn, solider)
                     pygame.display.update()
 
@@ -61,5 +66,21 @@ def handle_user_events():
 
                 elif event.key == pygame.K_ESCAPE:
                     running = False
-handle_user_events()
+
+
+def main():
+    pygame.init()
+    screen.draw_game()
+    # game_field.flag_place()
+    while state["is_window_open"]:
+        handle_user_events()
+        screen.draw_game()
+        soldier.draw_solider()
+        if soldier.check_flag_touch(soldier):
+            state["state"] == consts.LOSE_STATE
+            screen.scrn.fill(consts.BLACK)
+            pygame.display.flip()
+
+
+main()
 quit()

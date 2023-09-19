@@ -24,7 +24,8 @@ def move_left(scrn, solider):
         solider["x_val"] -= 12.5
         if solider["x_val"] >= 0:
             scrn.blit(consts.SOLDIER, (solider["x_val"], solider["y_val"]))
-            pygame.display.update()
+            check_flag_touch(solider)
+            pygame.display.flip()
 
 
 def move_right(scrn, solider):
@@ -32,7 +33,8 @@ def move_right(scrn, solider):
         solider["x_val"] += 12.5
         if solider["x_val"] <= 920:
             scrn.blit(consts.SOLDIER, (solider["x_val"], solider["y_val"]))
-            pygame.display.update()
+            check_flag_touch(solider)
+            pygame.display.flip()
 
 
 def move_up(scrn, solider):
@@ -40,7 +42,8 @@ def move_up(scrn, solider):
         solider["y_val"] -= 12.5
         if solider["y_val"] >= 12.5:
             scrn.blit(consts.SOLDIER, (solider["x_val"], solider["y_val"]))
-            pygame.display.update()
+            check_flag_touch(solider)
+            pygame.display.flip()
 
 
 def move_down(scrn, solider):
@@ -48,4 +51,14 @@ def move_down(scrn, solider):
         solider["y_val"] += 12.5
         if solider["y_val"] <= 420:
             scrn.blit(consts.SOLDIER, (solider["x_val"], solider["y_val"]))
-            pygame.display.update()
+            check_flag_touch(solider)
+            pygame.display.flip()
+
+
+def check_flag_touch(soldier):
+    if soldier["x_val"] + 37.5 == consts.FLAG_X:
+        if soldier["y_val"] == consts.FLAG_Y or soldier["y_val"] + 1 == consts.FLAG_Y or soldier[
+            "y_val"] + 2 == consts.FLAG_Y:
+            return True
+        else:
+            return False

@@ -3,6 +3,7 @@ import pygame
 import consts
 import game_field
 
+
 scrn = pygame.display.set_mode((consts.SCREEN_WIDTH, consts.SCREEN_LENGTH))
 
 
@@ -15,19 +16,25 @@ def draw_bushes():
         x = random.randint(0, 900)
         y = random.randint(0, 450)
         scrn.blit(grass, (x, y))
-        locate_list.append([x,y])
+        locate_list.append([x, y])
     return locate_list
 
-# def keep_bush_locate(locate_list):
-#     grass = pygame.transform.scale(consts.BUSH, (50, 50))
-#     for i in range(len(locate_list)):
-#         scrn.blit(grass, (locate_list[i][0],locate_list[i][1]))
-#
-#
+
+locate_list = draw_bushes()
+
+
 def draw_game():
-    draw_bushes()
+    scrn.fill(consts.BACKGROUND_COLOR)
+    grass = pygame.transform.scale(consts.BUSH, (50, 50))
+    for plant in locate_list:
+        scrn.blit(grass, (plant[0], plant[1]))
     draw_flag(scrn)
     pygame.display.flip()
+    # if main.state["state"] == consts.LOSE_STATE:
+    #     draw_lose_message()
+    # draw_bushes()
+    # draw_flag(scrn)
+    # pygame.display.flip()
 
 
 def draw_flag(scrn):
@@ -42,10 +49,10 @@ def draw_bomb(scrn):
     for i in range(20):
         bomb = {"x_val": 0, "y_val": 0}
         consts.BOMB = pygame.transform.scale(consts.BOMB, (consts.BOMB_HEIGHT, consts.BOMB_WIDTH))
-        bomb["x_val"], bomb["y_val"], board = game_field.bomb_generate_locate()
+        bomb["x_val"], bomb["y_val"], board , bomb_list= game_field.bomb_generate_locate()
         scrn.blit(consts.BOMB, (bomb["x_val"] * 20, bomb["y_val"] * 20))
         pygame.display.flip()
-    return board
+    return board , bomb_list
 
 
 def create_soldier():
@@ -57,3 +64,19 @@ def create_soldier():
 
 def draw_soldier():
     draw_game().blit(create_soldier())
+
+
+def draw_message(message, font_size, color, location):
+    font = pygame.font.SysFont(consts.FONT_NAME, font_size)
+    text_img = font.render(message, True, color)
+    scrn.blit(text_img, location)
+
+
+def draw_win_message():
+    draw_message(consts.WIN_MESSAGE, consts.WIN_FONT_SIZE,
+                 consts.WIN_COLOR, consts.WIN_LOCATION)
+
+
+def draw_lose_message():
+    draw_message(consts.LOSE_MESSAGE, consts.LOSE_FONT_SIZE,
+                 consts.LOSE_COLOR, consts.LOSE_LOCATION)

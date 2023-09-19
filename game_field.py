@@ -22,6 +22,7 @@ def wait_normal():
 
 def draw_grid_dark():
     flad = True
+    bomb_list=screen.draw_bomb(screen.scrn)
     screen.scrn.fill(consts.BACKGROUND_COLOR_DARK)
     blockSize = 20  # Set the size of the grid block
     for x in range(0, consts.SCREEN_WIDTH, blockSize):
@@ -30,6 +31,9 @@ def draw_grid_dark():
             pygame.draw.rect(screen.scrn, consts.BACKGROUND_COLOR, rect, 1)
     soldier.draw_night_soldier(screen.scrn)
     # bomb_generate_locate()
+    bomb1 = pygame.transform.scale(consts.BOMB, (50, 50))
+    for bomb in bomb_list:
+        screen.scrn.blit(bomb1, (bomb[0], bomb[1]))
     screen.draw_bomb(screen.scrn)
     pygame.display.flip()
     return flad
@@ -48,13 +52,14 @@ def draw_board():
 def bomb_generate_locate():
     board = draw_board()
     for i in range(20):
-
+        bomb_list = []
         bomb_x = random.randint(1, 47)
         bomb_y = random.randint(1, 22)
         while bomb_x < 4 and bomb_y < 4:
             bomb_x = random.randint(1, 47)
             bomb_y = random.randint(1, 22)
+            bomb_list.append([bomb_x,bomb_y])
         board[bomb_x][bomb_y - 1] = consts.BOMB
         board[bomb_x][bomb_y] = consts.BOMB
         board[bomb_x][bomb_y + 1] = consts.BOMB
-    return bomb_x, bomb_y, board
+    return bomb_x, bomb_y, board, bomb_list
