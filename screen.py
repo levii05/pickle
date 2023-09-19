@@ -49,10 +49,11 @@ def draw_bomb(scrn):
     for i in range(20):
         bomb = {"x_val": 0, "y_val": 0}
         consts.BOMB = pygame.transform.scale(consts.BOMB, (consts.BOMB_HEIGHT, consts.BOMB_WIDTH))
-        bomb["x_val"], bomb["y_val"], board , bomb_list= game_field.bomb_generate_locate()
+        bomb["x_val"], bomb["y_val"], board = game_field.bomb_generate_locate()
         scrn.blit(consts.BOMB, (bomb["x_val"] * 20, bomb["y_val"] * 20))
         pygame.display.flip()
-    return board , bomb_list
+    return board
+        # , bomb_list
 
 
 def create_soldier():
