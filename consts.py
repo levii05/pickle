@@ -12,6 +12,7 @@ SOLDIER = pygame.image.load("soldier.png")
 FLAG = pygame.image.load("flag.png")
 # EXPLOTION = pygame.image.load("explotion.png")
 SOLDIER_NIGHT = pygame.image.load("soldier_nigth.png")
+BOMB = pygame.image.load("mine.png")
 
 
 SOLDIER_HEIGHT = 40
@@ -22,3 +23,6 @@ FLAG_HEIGHT = 80
 
 FLAG_X = 920
 FLAG_Y = 440
+
+BOMB_HEIGHT = 60
+BOMB_WIDTH = 20
