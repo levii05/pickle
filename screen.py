@@ -5,7 +5,9 @@ import game_field
 
 scrn = pygame.display.set_mode((consts.SCREEN_WIDTH, consts.SCREEN_LENGTH))
 
+
 def draw_bushes():
+    locate_list = []
     scrn.fill(consts.BACKGROUND_COLOR)
     grass = pygame.transform.scale(consts.BUSH, (50, 50))
 
@@ -13,7 +15,9 @@ def draw_bushes():
         x = random.randint(0, 900)
         y = random.randint(0, 450)
         scrn.blit(grass, (x, y))
+        locate_list.append(x, y)
 
+def keep
 def draw_game():
     draw_bushes()
     draw_flag(scrn)

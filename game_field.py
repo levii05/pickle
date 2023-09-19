@@ -30,9 +30,7 @@ def draw_grid_dark():
     bomb_generate_locate()
     screen.draw_bomb(screen.scrn)
     pygame.display.flip()
-
     return flad
-
 
 def draw_board():
     row_list = []
@@ -48,11 +46,11 @@ def bomb_generate_locate():
     board = draw_board()
     for i in range(20):
 
-        bomb_x = random.randint(1, 48)
-        bomb_y = random.randint(1, 23)
+        bomb_x = random.randint(1, 47)
+        bomb_y = random.randint(1, 22)
         while bomb_x < 4 and bomb_y < 4:
-            bomb_x = random.randint(1, 48)
-            bomb_y = random.randint(1, 23)
+            bomb_x = random.randint(1, 47)
+            bomb_y = random.randint(1, 22)
         board[bomb_x][bomb_y - 1] = consts.BOMB
         board[bomb_x][bomb_y] = consts.BOMB
         board[bomb_x][bomb_y + 1] = consts.BOMB

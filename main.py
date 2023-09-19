@@ -18,8 +18,6 @@ display.update()
 
 
 def handle_user_events():
-    soldier_x = 0
-    soldier_y = 0
     running = True
     solider = soldier.draw_solider(screen.scrn)
     while running:
@@ -40,11 +38,8 @@ def handle_user_events():
                     pygame.display.update()
 
 
-
-
                 elif event.key == pygame.K_UP:
                     soldier.move_up(screen.scrn, solider)
-
 
 
                 elif event.key == pygame.K_DOWN :
@@ -57,6 +52,12 @@ def handle_user_events():
 
                 elif event.key == pygame.K_SPACE:
                     game_field.draw_grid_dark()
+                    flad = game_field.draw_grid_dark()
+                    if flad:
+                        game_field.draw_grid()
+                        screen.draw_game()
+                        soldier.draw_solider(screen.scrn)
+
 
                 elif event.key == pygame.K_ESCAPE:
                     running = False
