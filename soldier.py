@@ -1,13 +1,22 @@
 import consts
-import game_field
 import screen
+import pygame
 
 
 def draw_solider(scrn):
     soldier = {"x_val": 0, "y_val": 0}
+    consts.SOLDIER = pygame.transform.scale(consts.SOLDIER, (80, 80))
     scrn.blit(consts.SOLDIER, (0, 0))
-    # screen.scrn[0][0] = consts.SOLDIER
+    pygame.display.flip()
     return soldier
+
+
+def draw_night_soldier(scrn):
+    soldier_night = {"x_val": 0, "y_val": 0}
+    consts.SOLDIER_NIGHT = pygame.transform.scale(consts.SOLDIER_NIGHT, (80, 80))
+    scrn.blit(consts.SOLDIER_NIGHT, (0, 0))
+    pygame.display.flip()
+    return soldier_night
 
 
 def move_left(scrn, solider):

@@ -15,7 +15,16 @@ def draw_game():
         scrn.blit(grass, (x, y))
     # game_field.create_field()
     # game_field.bush_random()
+    draw_flag(scrn)
     pygame.display.flip()
+
+
+def draw_flag(scrn):
+    flag = {"x_val": 0, "y_val": 0}
+    consts.FLAG = pygame.transform.scale(consts.FLAG, (consts.FLAG_HEIGHT, consts.FLAG_WIDTH))
+    scrn.blit(consts.FLAG, (consts.FLAG_X, consts.FLAG_Y))
+    pygame.display.flip()
+    return flag
 
 
 def create_soldier():

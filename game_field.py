@@ -1,6 +1,6 @@
 import pygame
 import consts
-
+import soldier
 import screen
 
 
@@ -20,6 +20,7 @@ def draw_grid_dark():
         for y in range(0, consts.SCREEN_LENGTH, blockSize):
             rect = pygame.Rect(x, y, blockSize, blockSize)
             pygame.draw.rect(screen.scrn, consts.BACKGROUND_COLOR, rect, 1)
+    soldier.draw_night_soldier(screen.scrn)
     pygame.display.flip()
 
 # def bush_random():
