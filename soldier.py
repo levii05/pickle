@@ -37,9 +37,9 @@ def move_right(scrn, solider):
 
 
 def move_up(scrn, solider):
-    if solider["y_val"] >= 0:
+    if solider["y_val"] >=12.5:
         solider["y_val"] -= 12.5
-        if solider["y_val"] >= 0:
+        if solider["y_val"] >= 12.5:
             scrn.blit(consts.SOLDIER, (solider["x_val"], solider["y_val"]))
             pygame.display.update()
 
