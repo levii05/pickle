@@ -14,9 +14,11 @@ def draw_grid():
             pygame.draw.rect(screen.scrn, consts.BACKGROUND_COLOR, rect, 1)
     pygame.display.flip()
 
+
 def wait_normal():
     pygame.time.wait(1000)
     draw_grid()
+
 
 def draw_grid_dark():
     flad = True
@@ -27,10 +29,11 @@ def draw_grid_dark():
             rect = pygame.Rect(x, y, blockSize, blockSize)
             pygame.draw.rect(screen.scrn, consts.BACKGROUND_COLOR, rect, 1)
     soldier.draw_night_soldier(screen.scrn)
-    bomb_generate_locate()
+    # bomb_generate_locate()
     screen.draw_bomb(screen.scrn)
     pygame.display.flip()
     return flad
+
 
 def draw_board():
     row_list = []
@@ -54,5 +57,4 @@ def bomb_generate_locate():
         board[bomb_x][bomb_y - 1] = consts.BOMB
         board[bomb_x][bomb_y] = consts.BOMB
         board[bomb_x][bomb_y + 1] = consts.BOMB
-    return bomb_x, bomb_y
-
+    return bomb_x, bomb_y, board
